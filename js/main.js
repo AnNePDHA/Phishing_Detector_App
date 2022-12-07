@@ -1,0 +1,1 @@
+// alert("Page location is " + window.location.href)
