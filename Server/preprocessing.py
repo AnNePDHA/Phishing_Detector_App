@@ -16,6 +16,12 @@ import dns.resolver
 from similarweb import TrafficClient
 import ipaddress
 
+import threading
+import concurrent.futures
+from concurrent.futures import ThreadPoolExecutor
+import time
+
+
 def url_ip(url):
     hostname = urlparse(url)[1]
     # match = re.search('(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\/)|'  # IPv4
@@ -527,6 +533,159 @@ def features_list(url):
         features_list[29] = statistical_report(url, domain)
     return features_list
 
+def speed_features_list(url):
+    soup = BeautifulSoup(requests.get(url).content, 'html.parser')
+    try:
+        domain = whois.whois(url)
+    except:
+        domain = None
+    html = requests.get(url).text
+
+    features_list = [0]*30
+    executor = ThreadPoolExecutor()
+    my_max_workers = executor._max_workers
+
+    if domain == None:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=my_max_workers) as executor:
+            fl0 = executor.submit(url_ip, url)
+            fl1 = executor.submit(url_length, url)
+            fl2 = executor.submit(url_shorten, url)
+            fl3 = executor.submit(url_symbol, url)
+            fl4 = executor.submit(url_double_slash, url)
+            fl5 = executor.submit(url_prefix_suffix, url)
+            fl6 = executor.submit(url_sub_domain, url)
+            fl7 = executor.submit(https, url)
+            fl8 = executor.submit(check_domain_expired, url)
+            fl9 = 1
+            fl10 = executor.submit(check_stdport, url)
+            fl11 = executor.submit(https_token, url)
+            fl12 = 1
+            fl13 = executor.submit(evaluate_url_of_anchor, soup)
+            fl14 = 1
+            fl15 = 1
+            fl16 = executor.submit(submit_to_email, soup)
+            fl17 = 1
+            fl18 = executor.submit(website_forwarding, url)
+            fl19 = executor.submit(status_bar, html)
+            fl20 = executor.submit(right_mouse, html)
+            fl21 = executor.submit(pop_up, html)
+            fl22 = executor.submit(iframe, soup)
+            fl23 = 1
+            fl24 = 1
+            fl25 = executor.submit(website_traffic, url)
+            fl26 = executor.submit(page_rank, url)
+            fl27 = executor.submit(google_index, url)
+            fl28 = executor.submit(point_to_page, html)
+            fl29 = 1
+
+            features_list[0] = fl0.result()
+            features_list[1] = fl1.result()
+            features_list[2] = fl2.result()
+            features_list[3] = fl3.result()
+            features_list[4] = fl4.result()
+            features_list[5] = fl5.result()
+            features_list[6] = fl6.result()
+            features_list[7] = fl7.result()
+            features_list[8] = fl8.result()
+            features_list[9] = fl9
+            features_list[10] = fl10.result()
+            features_list[11] = fl11.result()
+            features_list[12] = fl12
+            features_list[13] = fl13.result()
+            features_list[14] = fl14
+            features_list[15] = fl15
+            features_list[16] = fl16.result()
+            features_list[17] = fl17
+            features_list[18] = fl18.result()
+            features_list[19] = fl19.result()
+            features_list[20] = fl20.result()
+            features_list[21] = fl21.result()
+            features_list[22] = fl22.result()
+            features_list[23] = fl23
+            features_list[24] = fl24
+            features_list[25] = fl25.result()
+            features_list[26] = fl26.result()
+            features_list[27] = fl27.result()
+            features_list[28] = fl28.result()
+            features_list[29] = fl29
+    else:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=my_max_workers) as executor:
+            fl0 = executor.submit(url_ip, url)
+            fl1 = executor.submit(url_length, url)
+            fl2 = executor.submit(url_shorten, url)
+            fl3 = executor.submit(url_symbol, url)
+            fl4 = executor.submit(url_double_slash, url)
+            fl5 = executor.submit(url_prefix_suffix, url)
+            fl6 = executor.submit(url_sub_domain, url)
+            fl7 = executor.submit(https, url)
+            fl8 = executor.submit(check_domain_expired, url)
+            fl9 = executor.submit(favicon, soup, domain)
+            fl10 = executor.submit(check_stdport, url)
+            fl11 = executor.submit(https_token, url)
+            fl12 = executor.submit(evaluate_request, soup, domain)
+            fl13 = executor.submit(evaluate_url_of_anchor, soup)
+            fl14 = executor.submit(evaluate_links_in_tags, soup, domain)
+            fl15 = executor.submit(sfh, soup, domain)
+            fl16 = executor.submit(submit_to_email, soup)
+            fl17 = executor.submit(abnormal_url, domain, url)
+            fl18 = executor.submit(website_forwarding, url)
+            fl19 = executor.submit(status_bar, html)
+            fl20 = executor.submit(right_mouse, html)
+            fl21 = executor.submit(pop_up, html)
+            fl22 = executor.submit(iframe, soup)
+            fl23 = executor.submit(age_of_domain, domain)
+            fl24 = executor.submit(dns_record, domain)
+            fl25 = executor.submit(website_traffic, url)
+            fl26 = executor.submit(page_rank, url)
+            fl27 = executor.submit(google_index, url)
+            fl28 = executor.submit(point_to_page, html)
+            fl29 = executor.submit(statistical_report, url, domain)
+
+            features_list[0] = fl0.result()
+            features_list[1] = fl1.result()
+            features_list[2] = fl2.result()
+            features_list[3] = fl3.result()
+            features_list[4] = fl4.result()
+            features_list[5] = fl5.result()
+            features_list[6] = fl6.result()
+            features_list[7] = fl7.result()
+            features_list[8] = fl8.result()
+            features_list[9] = fl9.result()
+            features_list[10] = fl10.result()
+            features_list[11] = fl11.result()
+            features_list[12] = fl12.result()
+            features_list[13] = fl13.result()
+            features_list[14] = fl14.result()
+            features_list[15] = fl15.result()
+            features_list[16] = fl16.result()
+            features_list[17] = fl17.result()
+            features_list[18] = fl18.result()
+            features_list[19] = fl19.result()
+            features_list[20] = fl20.result()
+            features_list[21] = fl21.result()
+            features_list[22] = fl22.result()
+            features_list[23] = fl23.result()
+            features_list[24] = fl24.result()
+            features_list[25] = fl25.result()
+            features_list[26] = fl26.result()
+            features_list[27] = fl27.result()
+            features_list[28] = fl28.result()
+            features_list[29] = fl29.result()
+
+    return features_list
+
+
+
+# start_time = time.time()
+# print(features_list('https://www.google.com/'))
+# print("--- %s seconds ---" % (time.time() - start_time))
+
+
+# start_time = time.time()
+# print(speed_features_list('https://www.google.com/'))
+# print("--- %s seconds ---" % (time.time() - start_time))
+
+
 import joblib
 
 
@@ -574,7 +733,9 @@ def detect(url):
     # args = parse_args()
     # url = args.url
     try:
-        output = features_list(url)
+        # output = features_list(url)
+        output = speed_features_list(url)
+        # print(output)
     except Exception as e:
         print(e)
     result = SVM_model.predict([output])
@@ -588,6 +749,3 @@ def detect(url):
         with open('result.txt', 'w') as f:
             f.write('Legitimate URL')
         return 'Legitimate URL'
-
-    
-
