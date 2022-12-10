@@ -553,7 +553,19 @@ import joblib
 #     args = parser.parse_args()
 #     return args
 
+
+
 def detect(url):
+
+    #delete result.txt
+    try:
+        os.remove('result.txt')
+    except OSError:
+        pass
+
+    with open('result.txt', 'w') as f:
+        f.write('Loading...')
+
     # DT_model = joblib.load('models/DT_model.pkl')
     # KNN_model = joblib.load('models/KNN_model.pkl')
     # LG_model = joblib.load('models/LG_model.pkl')
@@ -565,10 +577,17 @@ def detect(url):
         output = features_list(url)
     except Exception as e:
         print(e)
-
     result = SVM_model.predict([output])
     if result == 1:
+        #write to file txt mode w
+        with open('result.txt', 'w') as f:
+            f.write('Phishing URL')
         return 'Phishing URL'
     else:
+        #write to file txt mode w
+        with open('result.txt', 'w') as f:
+            f.write('Legitimate URL')
         return 'Legitimate URL'
+
+    
 

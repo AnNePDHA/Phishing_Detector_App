@@ -2,6 +2,9 @@
     "name": "Get URL",
     "version": "1.0",
     "description": "Lấy địa chỉ URL",
+    "action":{
+      "default_popup": "plugin_ui.html"
+    },
     "content_scripts":[
         {
           "matches": ["http://*/*","https://*/*"],
@@ -9,8 +12,5 @@
           "js": ["js/main.js"]
         }
       ],
-      "action":{
-        "default_popup": "plugin_ui.html"
-      } ,
       "manifest_version": 3
   }
