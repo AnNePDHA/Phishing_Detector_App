@@ -723,7 +723,7 @@ def detect(url):
         pass
 
     with open('result.txt', 'w') as f:
-        f.write('Loading...')
+        f.write('Loading')
 
     # DT_model = joblib.load('models/DT_model.pkl')
     # KNN_model = joblib.load('models/KNN_model.pkl')
@@ -742,10 +742,10 @@ def detect(url):
     if result == 1:
         #write to file txt mode w
         with open('result.txt', 'w') as f:
-            f.write('Phishing URL')
-        return 'Phishing URL'
+            f.write('Phish')
+        return 'Phish'
     else:
         #write to file txt mode w
         with open('result.txt', 'w') as f:
-            f.write('Legitimate URL')
-        return 'Legitimate URL'
+            f.write('Legit')
+        return 'Legit'

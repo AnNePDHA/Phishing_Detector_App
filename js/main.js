@@ -6,7 +6,6 @@ var url = window.location.href
 function getDetect(){
     let result = "Loading..."
     fetch("http://127.0.0.1:5000/getdetect/"+url).then(response => response.json()).then(function(data){
-        alert(data["result"]);
         console.log(data["result"]);
     });
 }
