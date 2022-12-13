@@ -723,13 +723,13 @@ def detect(url):
         pass
 
     with open('result.txt', 'w') as f:
-        f.write('Loading')
+        f.write('Loading...')
 
     # DT_model = joblib.load('models/DT_model.pkl')
     # KNN_model = joblib.load('models/KNN_model.pkl')
-    # LG_model = joblib.load('models/LG_model.pkl')
+    LG_model = joblib.load('models/LG_model.pkl')
     # RFC_model = joblib.load('models/RFC_model.pkl')
-    SVM_model = joblib.load('models/SVM_model.pkl')
+    # SVM_model = joblib.load('models/SVM_model.pkl')
     # args = parse_args()
     # url = args.url
     try:
@@ -738,7 +738,7 @@ def detect(url):
         # print(output)
     except Exception as e:
         print(e)
-    result = SVM_model.predict([output])
+    result = LG_model.predict([output])
     if result == 1:
         #write to file txt mode w
         with open('result.txt', 'w') as f:
