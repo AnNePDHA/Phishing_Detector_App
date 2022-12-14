@@ -716,7 +716,7 @@ import joblib
 
 def detect(url):
     with open('result.txt', 'w') as f:
-        f.write('Loading...')
+        f.write('Loading')
 
     # DT_model = joblib.load('models/DT_model.pkl')
     # KNN_model = joblib.load('models/KNN_model.pkl')
