@@ -715,13 +715,6 @@ import joblib
 
 
 def detect(url):
-
-    #delete result.txt
-    try:
-        os.remove('result.txt')
-    except OSError:
-        pass
-
     with open('result.txt', 'w') as f:
         f.write('Loading')
 

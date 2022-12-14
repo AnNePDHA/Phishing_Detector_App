@@ -13,6 +13,7 @@ fetch('result.txt')
         document.getElementById("site_score").style.top = "35px";
     }
     else if (data == "Phish"){
+        document.getElementById("res-circle").style.backgroundColor = "#bc5858";
         document.getElementById("site_msg").innerHTML = "This website is a phishing site";
         document.getElementById("site_score").style.fontSize = "50px";
         document.getElementById("site_score").style.top = "35px";

@@ -26,7 +26,7 @@ h1 {
     padding: 10px;
     text-align: center;
 }
-.rounded-circle {
+#res-circle {
     background: #58bc8a;
     width: 10rem;
     height: 10rem;
@@ -34,8 +34,10 @@ h1 {
     clear: both;
     align-content: center;
     margin: 0 auto; 
-
 }
+
+
+
 #site_score{
     font-family: 'Josefin Sans', sans-serif;
     color: white;
