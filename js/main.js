@@ -5,8 +5,9 @@ var url = window.location.href
 // });
 function getDetect(){
     fetch("http://127.0.0.1:5000/getdetect/"+url).then(response => response.json()).then(function(data){
-        console.log(data["result"]);
-        alert(data["result"]);
+        if(data["result"] == "Phish"){
+            alert("ĐÂY LÀ TRANG WEB LỪA ĐẢO!!!")
+        }
     });
 }
 
