@@ -45,7 +45,6 @@ https://github.com/user-attachments/assets/658cc5d2-6289-4944-94dc-f7ad16edf7db
 
 
 # Contribute
-## Data Engineer
 * **An Pham** - Data Engineer - [AnNePDHA](https://github.com/AnNePDHA)
   * Analyzed key features of phishing websites, common attack strategies, and user vulnerabilities.
   * Evaluated various ML models (Supervised Learning, Unsupervised Learning, Ensemble Methods) to compare their effectiveness in phishing detection.
