@@ -38,7 +38,8 @@ Developed a phishing detection app that identifies fake websites designed to ste
 The Web Phishing Detector App features a user-friendly interface that allows users to easily check the legitimacy of websites. The UI is designed for simplicity and efficiency, enabling seamless interaction with the phishing detection system.
 ![My Image](Images_result/app_ui.png)
 
-This demo provides a clear overview of how the app operates, from detecting potential threats to delivering accurate insights for users
+This demo provides a clear overview of how the app operates, from detecting potential threats to delivering accurate insights for users:
+
 https://github.com/user-attachments/assets/658cc5d2-6289-4944-94dc-f7ad16edf7db
 
 
