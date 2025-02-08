@@ -46,5 +46,8 @@ https://github.com/user-attachments/assets/658cc5d2-6289-4944-94dc-f7ad16edf7db
 
 # Contribute
 ## Data Engineer
-* **An Pham** - *Initial work* - [AnNePDHA](https://github.com/AnNePDHA)
-  * TODO: Explain how other users and developers can contribute to make your code better. 
+* **An Pham** - Data Engineer - [AnNePDHA](https://github.com/AnNePDHA)
+  * Analyzed key features of phishing websites, common attack strategies, and user vulnerabilities.
+  * Evaluated various ML models (Supervised Learning, Unsupervised Learning, Ensemble Methods) to compare their effectiveness in phishing detection.
+  * Using Python to collected, labeled, and processed datasets of legitimate and phishing websites to train the models.
+  * Designed and implemented a Flask-based application, deployed on Azure App Service, allowing real-time phishing detection
